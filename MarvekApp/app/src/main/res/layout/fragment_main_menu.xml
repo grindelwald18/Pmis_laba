@@ -21,14 +21,35 @@
         android:id="@+id/moviesList"
         android:layout_width="match_parent"
         android:layout_height="579dp"
+        android:layout_weight="1"
         android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="20dp" />
 
-    <Button
-        android:id="@+id/aboutButton"
-        android:layout_width="104dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
-        android:backgroundTint="#BF1111"
-        android:text="About" />
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="#BF1111"
+            android:text="About" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#BF1111"
+            android:text="Добавить" />
+
+    </LinearLayout>
 </LinearLayout>

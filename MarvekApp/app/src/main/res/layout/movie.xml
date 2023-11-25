@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/movie_image"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="480dp"
         android:scaleType="centerCrop"
         android:src="@drawable/puck" />
 
@@ -17,33 +17,30 @@
         android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/movie_desc"
-        android:paddingHorizontal="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="Movie Title"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/movie_date"
-        android:paddingHorizontal="20dp"
+        android:paddingHorizontal="26dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:gravity="end"
+        android:text="Release Date"
+        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/movie_change"
-        android:layout_width="match_parent"
+        android:id="@+id/detailsButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#BF1111"
-        android:text="Изменить" />
+        android:text="Подробнее"
+        android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/movie_delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#BF1111"
-        android:text="Удалить" />
 </LinearLayout>

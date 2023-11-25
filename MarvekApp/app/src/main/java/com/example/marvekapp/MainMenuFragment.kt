@@ -8,14 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
 
-//import androidx.navigation.Navigation
 
 class MainMenuFragment : Fragment() {
+    private lateinit var movieViewModel: MovieViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -24,27 +25,31 @@ class MainMenuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main_menu, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Подключение к кнопке About
+        movieViewModel = ViewModelProvider(requireActivity()).get(MovieViewModel::class.java)
+
+        movieViewModel.selectMovie(null)
+
         val aboutButton = view.findViewById<Button>(R.id.aboutButton)
         aboutButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainMenuFragment_to_aboutFragment)
         }
 
-        val moviesList: RecyclerView = view.findViewById(R.id.moviesList)
-        val movies = arrayListOf<Movie>()
+        val addButton = view.findViewById<Button>(R.id.addButton)
+        addButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainMenuFragment_to_addMovieFragment)
+        }
 
-        movies.add(Movie(1, "Ex1", "qwerty", "qwerty", LocalDate.of(2020, 2,3)))
-        movies.add(Movie(1, "Ex2", "qwerty", "qwerty", LocalDate.of(2020, 2,3)))
-        movies.add(Movie(1, "Ex3", "qwerty", "qwerty", LocalDate.of(2020, 2,3)))
+        val moviesList: RecyclerView = view.findViewById(R.id.moviesList)
 
         moviesList.layoutManager = LinearLayoutManager(this.context)
-        moviesList.adapter = this.context?.let { MovieAdapter(movies, it) }
+
+        movieViewModel.getData().observe(viewLifecycleOwner) { movieList ->
+            moviesList.adapter = context?.let { MovieAdapter(movieList, movieViewModel, it) }
+        }
     }
 }

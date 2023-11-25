@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_addMovieFragment"
+            app:destination="@id/addMovieFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -21,5 +27,26 @@
         <action
             android:id="@+id/action_aboutFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMovieFragment"
+        android:name="com.example.marvekapp.AddMovieFragment"
+        android:label="fragment_add_movie"
+        tools:layout="@layout/fragment_add_movie" >
+        <action
+            android:id="@+id/action_addMovieFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.marvekapp.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_addMovieFragment"
+            app:destination="@id/addMovieFragment" />
     </fragment>
 </navigation>
